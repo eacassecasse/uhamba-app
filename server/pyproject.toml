@@ -17,7 +17,11 @@ dependencies = [
     "redis (>=6.4.0,<7.0.0)",
     "django-cors-headers (>=4.7.0,<5.0.0)",
     "django-filter (>=25.1,<26.0)",
-    "djangorestframework-simplejwt (>=5.5.1,<6.0.0)"
+    "djangorestframework-simplejwt (>=5.5.1,<6.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "dj-database-url (>=3.0.1,<4.0.0)",
+    "sentry-sdk[django] (>=2.37.0,<3.0.0)",
+    "django-extensions (>=4.1,<5.0)"
 ]
 
 

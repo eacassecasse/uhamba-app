@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Role Module for Uhamba project"""
 from django.db import models
-from core.models import BaseModel
+from api.v1.core.models import BaseModel
 
 
 class Role(BaseModel):

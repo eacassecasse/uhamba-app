@@ -6,15 +6,17 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
-from core.models import BaseModel
-from tenancy.models import Tenant
+from django.utils.translation import gettext_lazy as _
+from api.v1.core.models import BaseModel
+from api.v1.tenancy.models import Tenant
 
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError("Email address must not be empty")
+            raise ValueError(_("Email address must not be empty"))
         email = self.normalize_email(email)
+        extra_fields.setdefault("is_active", True)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -35,9 +37,8 @@ class UserManager(BaseUserManager):
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     """This class defines a user by various attributes"""
 
-    email = models.EmailField(max_length=100, unique=True)
+    email = models.EmailField(_("email address"),max_length=100, unique=True)
     email_verified = models.BooleanField(default=False)
-    password = models.CharField(max_length=255)
 
     last_login_at = models.DateTimeField(null=True, blank=True)
     failed_login_attempts = models.IntegerField(default=0)
@@ -51,7 +52,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["password"]
+    REQUIRED_FIELDS = []
 
     class Meta:
         db_table = "users"

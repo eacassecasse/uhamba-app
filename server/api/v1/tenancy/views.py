@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+from api.v1.tenancy.views import TenantList
+from api.v1.tenancy.views import TenantDetail

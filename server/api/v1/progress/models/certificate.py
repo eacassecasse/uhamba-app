@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ Certificate Module for Uhamba project """
 from django.db import models
-from auth.models import User
-from core.models import BaseModel
-from tenancy.models import Tenant
-from learning.models import Course, Pathway
+from api.v1.auth.models import User
+from api.v1.core.models import BaseModel
+from api.v1.tenancy.models import Tenant
+from api.v1.learning.models import Course, Pathway
 
 
 class Certificate(BaseModel):

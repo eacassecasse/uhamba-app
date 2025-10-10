@@ -2,7 +2,7 @@
 """ Question Option module for the Uhamba project """
 from django.db import models
 
-from core.models import BaseModel
+from api.v1.core.models import BaseModel
 from .question import Question
 
 

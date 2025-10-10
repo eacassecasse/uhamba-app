@@ -2,7 +2,7 @@
 """ Answer Attempts Module for Uhamba project """
 from django.db import models
 
-from core.models import BaseModel
+from api.v1.core.models import BaseModel
 from .attempt import Attempt
 from .question import Question
 

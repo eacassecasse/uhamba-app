@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Course Modules for Uhamba project """
 from django.db import models
-from core.models import BaseModel
-from tenancy.models import Tenant
+from api.v1.core.models import BaseModel
+from api.v1.tenancy.models import Tenant
 from .course import Course
 
 

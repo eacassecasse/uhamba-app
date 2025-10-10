@@ -2,7 +2,19 @@
 """This module defines a base class for all models"""
 import uuid
 from django.db import models
+from django.utils import timezone
 
+
+class SoftDeleteQuerySet(models.QuerySet):
+    """A custom QuerySet that filters out soft-deleted objects by default"""
+
+    def delete(self):
+        """Soft delete objects in the queryset"""
+        return super().update(deleted_at=timezone.now())
+
+    def alive(self):
+        """Return only non-deleted objects"""
+        return self.filter(deleted_at__isnull=True)
 
 class BaseModel(models.Model):
     """A base class for all models"""
@@ -31,3 +43,7 @@ class BaseModel(models.Model):
         if "_state" in dictionary:
             dictionary.pop("_state", None)
         return dictionary
+    
+    def hard_delete(self, using=None, keep_parents=False):
+        """Permanently delete the instance from the database"""
+        super().delete(using=using, keep_parents=keep_parents)

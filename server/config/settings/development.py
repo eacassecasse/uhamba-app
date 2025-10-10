@@ -1,4 +1,14 @@
 from .base import *
 
 DEBUG = True
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "db.sqlite3"}}
+
+ALLOWED_HOSTS = ["*"]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3"
+        }
+    }
+
+CORS_ALLOW_ALL_ORIGINS = True

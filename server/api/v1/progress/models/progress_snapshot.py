@@ -2,10 +2,10 @@
 """ Progress snapshot Module for Uhamba project """
 from django.db import models
 
-from core.models import BaseModel
-from auth.models import User
-from learning.models import Course
-from tenancy.models import Tenant
+from api.v1.core.models import BaseModel
+from api.v1.auth.models import User
+from api.v1.learning.models import Course
+from api.v1.tenancy.models import Tenant
 
 
 class ProgressSnapshot(BaseModel):

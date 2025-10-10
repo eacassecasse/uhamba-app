@@ -1,0 +1,30 @@
+services:
+
+  # database:
+  #   image: postgres:17
+  #   restart: unless-stopped
+  #   shm_size: 512mb
+  #   environment:
+  #     POSTGRES_USER: docker
+  #     POSTGRES_PASSWORD: docker
+  #     POSTGRES_DB: agents
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+  stu-uhamba-pg:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    shm_size: 512mb
+    environment:
+      POSTGRES_USER: stu_uhamba_usr
+      POSTGRES_PASSWORD: stu_uhamba_pwd
+      POSTGRES_DB: stu_uhamba_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
